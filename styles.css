@@ -216,3 +216,18 @@ input:focus, textarea:focus{outline:2px solid var(--ring); border-color:transpar
   display: grid; place-items: center;
 }
 .lightbox-close:hover{ background: #fff; }
+
+/* Mai mult spațiu în formular + buton mai jos */
+.form-card{
+  display: grid;        /* ca să poți folosi gap */
+  gap: 1rem;            /* distanță între câmpuri */
+  padding-bottom: 1.5rem; /* spațiu sub buton */
+}
+
+.form-card button{
+  margin-top: .6rem;    /* împinge butonul mai jos */
+  /* dacă vrei pe toată lățimea: */
+  /* width: 100%; */
+  /* dacă vrei aliniat la dreapta: */
+  /* justify-self: end; */
+}
