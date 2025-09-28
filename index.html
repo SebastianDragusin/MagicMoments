@@ -141,8 +141,12 @@
           <p><strong>Email:</strong> <a href="mailto:aolteanu255@yahoo.com">aolteanu255@yahoo.com</a></p>
           <a class="btn btn-soft" href="https://wa.me/40750692241" target="_blank" rel="noopener">WhatsApp</a>
         </div>
-        <form name="contact" method="POST" data-netlify="true" class="form-card">
+
+        <!-- Formular Netlify + popup (fără redirect) -->
+        <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="form-card">
           <input type="hidden" name="form-name" value="contact" />
+          <p class="hidden"><label>Nu completa: <input name="bot-field" /></label></p>
+
           <label>
             Nume
             <input required name="nume" placeholder="Numele tău" />
@@ -155,8 +159,10 @@
             Mesaj
             <textarea required name="mesaj" rows="4" placeholder="Scrie-ne detalii despre eveniment"></textarea>
           </label>
-          <button class="btn btn-primary" type="submit">Trimite</button>
+
+          <button class="btn btn-primary" type="submit" id="contactSubmit">Trimite</button>
         </form>
+        <p id="status" style="margin-top:.6rem"></p>
       </div>
     </section>
   </main>
@@ -167,7 +173,7 @@
 
   <!-- Buton WhatsApp plutitor -->
   <a href="https://wa.me/40750692241" class="fab" aria-label="Deschide WhatsApp" target="_blank" rel="noopener">
-  <!-- WhatsApp official-ish glyph (smooth) -->
+    <!-- WhatsApp official-ish glyph (smooth) -->
     <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" role="img">
       <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.6-6.0C.056 5.207 5.264 0 11.88 0 18.497 0 23.7 5.207 23.7 11.837c0 6.63-5.203 11.837-11.82 11.837a11.9 11.9 0 01-6.209-1.7L.057 24zm6.597-3.807c1.741.995 3.154 1.591 5.267 1.591 5.446 0 9.886-4.434 9.886-9.89 0-5.457-4.44-9.89-9.886-9.89-5.452 0-9.89 4.433-9.89 9.89 0 2.235.654 3.891 1.746 5.555l-.999 3.648 3.876-.995zm11.387-5.464c-.074-.124-.272-.198-.57-.346-.297-.149-1.758-.868-2.03-.967-.272-.099-.47-.149-.669.149-.198.297-.767.967-.94 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.346.446-.519.149-.173.198-.297.297-.495.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413z"></path>
     </svg>
@@ -181,6 +187,15 @@
     <button class="lightbox-close" aria-label="Închide">×</button>
     <img id="lightbox-img" alt="">
   </div>
+
+  <!-- Popup „Mulțumim” -->
+  <div id="thankyou" class="modal" aria-hidden="true" role="dialog" aria-label="Mulțumim">
+    <div class="modal-card" role="document">
+      <button class="modal-close" aria-label="Închide">×</button>
+      <h3>Mulțumim! 🎉</h3>
+      <p>Mesajul tău a fost trimis. Îți răspundem cât mai curând.</p>
+      <button class="btn btn-primary" id="closeThanks">Închide</button>
+    </div>
+  </div>
 </body>
 </html>
-
